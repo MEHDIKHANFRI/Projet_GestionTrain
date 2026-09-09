@@ -541,6 +541,7 @@ function Statistiques() {
                 trouve = i;
             }
         }
+        console.log("id #" + trips[trouve].trajet_id);
         console.log("departure : " + trips[trouve].departure);
         console.log("destination : " + trips[trouve].destination);
         console.log("departureTime : " + trips[trouve].departureTime);
