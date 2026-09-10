@@ -300,11 +300,11 @@ function acheter() {
             billetAnnulle = ticket_annuller[index];
 
             billetAnnulle.nom = billet.nom;
-            billetAnnulle.id = billet.id_generale;
+            billetAnnulle.ticket_id = id_generale;
 
             ticket.push(billetAnnulle);
                         console.log("===================");
-                        console.log("Ticket #" + billetAnnulle.id);
+                        console.log("Ticket #" + billetAnnulle.ticket_id);
                         console.log("Passager : " + billetAnnulle.nom);
                         console.log("Trajet : " + billetAnnulle.trajet);
                         console.log("Nombre ticket : " + billetAnnulle.nombre);
