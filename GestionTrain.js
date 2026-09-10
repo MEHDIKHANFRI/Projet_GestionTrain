@@ -252,6 +252,7 @@ while (true) {
         console.log("===================");
     }
 }
+
 // fonction pour afficher tous les trajets
 function afficherTrajets() {
     console.log("======= AFFICHER TRAJETS ======= ");
@@ -268,8 +269,10 @@ function afficherTrajets() {
         console.log();
     }
 }
+
 // fonction pour stocker les billets annulés
 function listAnnules(referance) {
+    
     for (let i = 0; i < ticket_annuller.length; i++) {
         if (referance == ticket_annuller[i].trajet_id) {
             return i ;
@@ -277,10 +280,12 @@ function listAnnules(referance) {
     }
     return -1;
 }
+
 // fonction pour acheter les billets
 function acheter() {
     let billetAnnulle ;
     let index ;
+    let place;
     console.log("======= ACHETER TICKETS ======= ");
 
     const billet = {
@@ -298,6 +303,7 @@ function acheter() {
             index = listAnnules(billet.trajet_id);
 
             billetAnnulle = ticket_annuller[index];
+            place = billetAnnulle.Place;
 
             billetAnnulle.nom = billet.nom;
             billetAnnulle.ticket_id = id_generale;
@@ -311,6 +317,11 @@ function acheter() {
                         console.log("Place : " + billetAnnulle.Place);
                         console.log("Price : " + billetAnnulle.Prix);
                         console.log("===================");
+                for (let j = index; j < ticket_annuller.length - 1; j++) {
+                    ticket_annuller[j] = ticket_annuller[j + 1];
+                    }
+                ticket_annuller.length--;
+
         } else {
             for (let i = 0; i < trips.length; i++) {
                 if (billet.trajet_id == trips[i].id) {
@@ -353,6 +364,7 @@ function acheter() {
 
     }
 }
+
 // fonction pour afficher les billets achetés
 function afficherTickets() {
     console.log("======= AFFICHER TICKETS ======= ");
@@ -374,6 +386,7 @@ function afficherTickets() {
     }
 
 }
+
 // fonction pour annuler les billets
 function AnnulerTicket() {
     console.log("======= ANNULET TICKETS ======= ");
@@ -415,6 +428,7 @@ function AnnulerTicket() {
         console.log("===================");
     }
 }
+
 // fonction pour recherher un billet
 function rechercher_ticket() {
     console.log("======= RECHERCHE TICKET ======= ");
@@ -433,6 +447,7 @@ function rechercher_ticket() {
         }
     }
 }
+
 // fonction pour filtrer trajets
 function filtrer_trajet() {
     console.log("======= RECHERCHE TICKET ======= ");
@@ -458,6 +473,7 @@ function filtrer_trajet() {
         console.log("Ville introuvable !");
     }
 }
+
 // fonction pour trier les billets par prix
 function trie_ticket() {
     console.log("======= TRI TICKET ======= ");
@@ -524,6 +540,7 @@ function trie_ticket() {
     }
 
 }
+
 // fonctions bonus pour afficher les statistiques des billets
 function Statistiques() {
     console.log("======= STATISTIQUES ======= ");
@@ -595,6 +612,6 @@ console.log("=================================");
         
     }else{
         console.log("Aucun ticket n'a été achete ! ");
-    }
+        }
     }
 }
