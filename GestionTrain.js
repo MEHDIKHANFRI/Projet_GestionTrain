@@ -182,10 +182,10 @@ const trips = [
         availableSeats: 50
     }
 ];
-
+let ticket = [];
 let choix;
 let id_generale = 0;
-let ticket = [];
+
 let ticket_annuller = [];
 
 function menu() {
@@ -401,9 +401,14 @@ function AnnulerTicket() {
 
                 ticket_annuller.push(ticket[i]);
                 
-                index = ticket[i].trajet_id
+                for (let j = 0; j < trips.length; j++) {
+                    if (trips[j].id == ticket[i].trajet_id) {
+                        index = j;
+                        break;
+                    }
+                }
                 trips[index].availableSeats++;
-
+                
                 for (let j = i; j < ticket.length - 1; j++) {
                     ticket[j] = ticket[j + 1];
                 }
@@ -508,7 +513,6 @@ function trie_ticket() {
             console.log("destination : " + trips[i].destination);
             console.log("departureTime : " + trips[i].departureTime);
             console.log("arrivalTime : " + trips[i].arrivalTime);
-            console.log("Nombre de ticket : " + trips[i].nombre);
             console.log("price : " + trips[i].price);
             console.log("availableSeats : " + trips[i].availableSeats);
             console.log();
@@ -532,7 +536,6 @@ function trie_ticket() {
             console.log("destination : " + trips[i].destination);
             console.log("departureTime : " + trips[i].departureTime);
             console.log("arrivalTime : " + trips[i].arrivalTime);
-            console.log("Nombre de ticket : " + trips[i].nombre);
             console.log("price : " + trips[i].price);
             console.log("availableSeats : " + trips[i].availableSeats);
             console.log();
